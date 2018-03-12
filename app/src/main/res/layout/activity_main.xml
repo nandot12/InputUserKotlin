@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="40dp"
+    android:layout_height="match_parent"
+    tools:context="id.co.imastudio.inputuserkotlin.MainActivity">
+
+ <EditText
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:hint="Input 1"
+     android:inputType="number"
+     android:id="@+id/input1"/>
+
+    <EditText
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:hint="Input 2"
+        android:layout_below="@+id/input1"
+        android:inputType="number"
+     android:id="@+id/input2"/>
+
+
+    <Button
+        android:id="@+id/btnHitung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input2"
+        android:text="Hitung"/>
+</RelativeLayout>
