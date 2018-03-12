@@ -14,6 +14,6 @@ class SecondActivity : AppCompatActivity() {
       val hasiltangkap =   intent.getStringExtra("hasil")
 
         Toast.makeText(this,hasiltangkap,Toast.LENGTH_SHORT).show()
-        
+
     }
 }

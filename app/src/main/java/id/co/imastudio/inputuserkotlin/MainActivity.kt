@@ -5,56 +5,50 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //event klik button
-        btnHitung.setOnClickListener {
-
-            if (input1.text.toString().isNotEmpty() &&
-                    input2.text.toString().isNotEmpty()) {
-                //ambil dari inputan user
-                val angka1 = input1.text.toString().toDouble()
-                val angka2 = input2.text.toString().toDouble()
 
 
-                val hasil = 0.5 * angka1 * angka2
+        btnKali.setOnClickListener{hitung("*")}
+        btnBagi.setOnClickListener { hitung("/") }
+        btnKurang.setOnClickListener {  hitung("-")}
+        btnTambah.setOnClickListener {hitung("+")  }
+        btnClear.setOnClickListener { input1.setText("")
+                                         input2.setText("")}
 
-                Toast.makeText(this,hasil.toString(),Toast.LENGTH_SHORT).show()
-                //hasilnya tmpil di alert
-                val inialert = AlertDialog.Builder(this)
-                inialert.setTitle(hasil.toString())
-                inialert.setPositiveButton("pindah", DialogInterface.OnClickListener {
-                    dialogInterface, i ->
 
-                    //pindah halaman
-                    var iniIntent = Intent(this,SecondActivity::class.java)
-                    iniIntent.putExtra("hasil",hasil.toString())
-
-                    startActivity(iniIntent)
+    }
 
 
 
-                })
-                inialert.show()
+    private fun hitung(s: String) {
+        var angk1 = input1.text.toString()
+        var angk2 = input2.text.toString()
+        if(angk1.isNotEmpty() && angk2.isNotEmpty()){
+
+            when(s){
+                "*" ->   alert(angk1.toInt() * angk2.toInt())
+                "-" -> alert(angk1.toInt()  - angk2.toInt())
+                "+" -> alert(angk1.toInt()  + angk2.toInt())
+                "/" -> alert(angk1.toInt()  / angk2.toInt())
+
             }
-            else{
-
-                input2.setError("hei,")
-
-
-
-                Toast.makeText(this,"tidak boleh kosong",Toast.LENGTH_SHORT)
-                        .show()
-            }
-
-
         }
+    }
+
+    private fun alert(i: Int) {
+        var alert = AlertDialog.Builder(this)
+        alert.setTitle("hasil")
+        alert.setMessage(i.toString())
+        alert.show()
     }
 }
